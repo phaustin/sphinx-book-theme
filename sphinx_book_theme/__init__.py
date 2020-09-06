@@ -8,9 +8,7 @@ from scss.compiler import compile_file
 
 from .launch import add_hub_urls
 
-__version__ = "0.0.36"
-"""sphinx-book-theme version"""
-
+__version__ = "0.0.36-alpha.0"
 SPHINX_LOGGER = logging.getLogger(__name__)
 
 

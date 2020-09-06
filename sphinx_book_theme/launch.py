@@ -100,9 +100,10 @@ def add_hub_urls(
 
     if jupyterhub_url:
         url = (
-            f"{jupyterhub_url}/hub/user-redirect/git-pull?"
-            f"repo={repo_url}&urlpath={ui_pre}/{repo}/{path_rel_repo}&branch={branch}"
+            f"{jupyterhub_url}/{ui_pre}"
+            f"/{path_rel_repo}"
         )
+        print(f"created url={url}")
         context["jupyterhub_url"] = url
 
     if colab_url:
