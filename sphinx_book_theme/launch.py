@@ -89,7 +89,7 @@ def add_hub_urls(
 
     # Now build infrastructure-specific links
     jupyterhub_url = launch_buttons.get("jupyterhub_url")
-    binderhub_url = launch_buttons.get("binderhub_url")
+    #binderhub_url = launch_buttons.get("binderhub_url")
     colab_url = launch_buttons.get("colab_url")
     if binderhub_url:
         url = (
@@ -100,8 +100,8 @@ def add_hub_urls(
 
     if jupyterhub_url:
         url = (
-            f"{jupyterhub_url}/{ui_pre}"
-            f"/{path_rel_repo}"
+            f"{jupyterhub_url}/hub/user-redirect/git-pull?"
+            f"repo={repo_url}&urlpath={ui_pre}/{repo}/{path_rel_repo}&branch={branch}"
         )
         print(f"created url={url}")
         context["jupyterhub_url"] = url
@@ -120,6 +120,8 @@ def _split_repo_url(url):
     if "github.com/" in url:
         end = url.split("github.com/")[-1]
         org, repo = end.split("/")[:2]
+    elif "file:///srv" in url:
+        org, repo = "org", "repo"
     else:
         SPHINX_LOGGER.warning(
             f"Currently Binder/JupyterHub repositories must be on GitHub, got {url}"
