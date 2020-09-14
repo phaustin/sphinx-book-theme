@@ -90,6 +90,7 @@ def add_hub_urls(
     # Now build infrastructure-specific links
     jupyterhub_url = launch_buttons.get("jupyterhub_url")
     #binderhub_url = launch_buttons.get("binderhub_url")
+    binderhub_url = None
     colab_url = launch_buttons.get("colab_url")
     if binderhub_url:
         url = (
